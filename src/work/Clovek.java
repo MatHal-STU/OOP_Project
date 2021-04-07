@@ -5,4 +5,5 @@ public interface Clovek {
     int getVyplata();
     void vytvor(boolean skusenost);
 
+
 }

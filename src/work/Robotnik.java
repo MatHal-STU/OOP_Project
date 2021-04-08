@@ -7,6 +7,7 @@ public abstract class Robotnik implements Clovek{
     protected boolean skuseny;
     protected String meno;
 
+
     @Override
     public void vytvor(boolean skusenost) {
         this.skuseny = skusenost;

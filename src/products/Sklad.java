@@ -2,6 +2,8 @@ package products;
 
 public class Sklad {
 
+    static Sklad sklad = new Sklad();
+
     public int getMaterial1() {
         return material1;
     }
@@ -45,10 +47,9 @@ public class Sklad {
     int material1=0,material2=0,material3=0;
     int palubovka1=0,palubovka2=0;
 
-    static Sklad sklad = new Sklad();
+
 
     private Sklad(){
-
     }
 
     public static Sklad getInstance(){

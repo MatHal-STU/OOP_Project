@@ -9,7 +9,7 @@ public class Opravar implements Clovek {
     protected boolean skuseny;
     protected boolean volny;
     protected String meno;
-    protected int vek = 35;
+
 
 
     public Opravar(){

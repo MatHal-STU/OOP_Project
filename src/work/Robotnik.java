@@ -8,8 +8,8 @@ public abstract class Robotnik implements Clovek{
     protected String meno;
 
 
-    @Override
-    public void vytvor(boolean skusenost) {
+
+    public Robotnik(boolean skusenost) {
         this.skuseny = skusenost;
         if(skusenost){
             this.vyplata = (new Random().nextInt(3)+8)*100;
@@ -37,4 +37,11 @@ public abstract class Robotnik implements Clovek{
     public int getVyplata() {
         return this.vyplata;
     }
+
+    @Override
+    public void vykonaj() {
+
+    }
+
+
 }

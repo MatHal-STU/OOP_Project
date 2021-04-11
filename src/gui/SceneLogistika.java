@@ -11,6 +11,8 @@ public class SceneLogistika extends Stage {
         super();
 
         Button odhlas1 = new Button("Odhlásiť");
+        Button objednajMaterial = new Button("Materialy");
+
         odhlas1.setOnAction(e -> new SceneUvod(hlavneOkno));
         VBox loglayout = new VBox(10);
         loglayout.getChildren().addAll(odhlas1);

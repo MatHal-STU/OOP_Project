@@ -18,6 +18,8 @@ public class WinSklad extends Stage {
 
         TilePane tileButtonsSklad = new TilePane(Orientation.HORIZONTAL);
 
+
+
         Button palubovky = new Button("Palubovky");
 
 
@@ -29,6 +31,11 @@ public class WinSklad extends Stage {
         palubovky.setOnAction(e->{
                 vypisSklad.clear();
                 vypisSklad.appendText(firma.vypisPalub());});
+
+        material.setOnAction(e-> {
+            vypisSklad.clear();
+            vypisSklad.appendText(firma.vypisMat());
+        });
 
         setScene(new Scene(skladlayout, 500, 300));
         show();

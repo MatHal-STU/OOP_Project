@@ -10,10 +10,8 @@ import java.util.ArrayList;
 
 public class Firma {
 
-    static ArrayList<SkusenyRobotnik> skuseny = new ArrayList<>();
-    static ArrayList<NeskusenyRobotnik> neskuseny = new ArrayList<>();
     Opravar opravar = new Opravar();
-    Produkcia produkcia = new Produkcia(skuseny,neskuseny);
+    Produkcia produkcia = new Produkcia();
     Sklad sklad = Sklad.getInstance();
 
 
@@ -24,7 +22,15 @@ public class Firma {
     public String vypisPalub(){
         String sprava;
         sprava =    "Pocet paluboviek VW " + sklad.getPalubovka1() +
-                    "\nPocet paluboviek Audi" + sklad.getPalubovka2();
+                    "\nPocet paluboviek Audi " + sklad.getPalubovka2();
+
+        return sprava;
+    }
+
+    public String vypisMat(){
+        String sprava;
+        sprava =    "Pocet Materialu na palubovku VW " + sklad.getMaterial1() +
+                "\nPocet materialu na palubovku Audi " + sklad.getMaterial2();
 
         return sprava;
     }

@@ -1,5 +1,6 @@
 package background;
 
+import javafx.scene.control.ChoiceBox;
 import managment.Produkcia;
 import products.Sklad;
 import work.NeskusenyRobotnik;
@@ -19,10 +20,15 @@ public class Firma {
 
     }
 
+    public String vyrobaP(ChoiceBox<String> vyber,int mnozstvo){
+        String model = vyber.getValue();
+        return produkcia.vyrob(mnozstvo,model);
+    }
+
     public String vypisPalub(){
         String sprava;
-        sprava =    "Pocet paluboviek VW " + sklad.getPalubovka1() +
-                    "\nPocet paluboviek Audi " + sklad.getPalubovka2();
+        sprava =    "Pocet paluboviek VW " + sklad.getPalubovkaVW() +
+                    "\nPocet paluboviek Audi " + sklad.getPalubovkaAudi();
 
         return sprava;
     }
@@ -35,8 +41,10 @@ public class Firma {
         return sprava;
     }
 
-    public void vypisRobotnikov(){
+    public String vypisRobotnikov(){
 
+
+        return produkcia.vypisRobotnikov();
 
 
 

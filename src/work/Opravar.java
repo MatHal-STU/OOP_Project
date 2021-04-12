@@ -9,7 +9,8 @@ public class Opravar implements Clovek {
     protected boolean volny;
     protected String meno;
 
-
+    Stroj strojVW = new Stroj("VW");
+    Stroj strojAudi = new Stroj("Audi");
 
     public Opravar(){
         this.volny = true;
@@ -18,6 +19,21 @@ public class Opravar implements Clovek {
     }
 
 
+    private String skontrolujAudi(){
+        String sprava = "Stroj Audi v poriadku";
+        if (!strojAudi.isFunkcnost()){
+            sprava = "Nefuknčný stroj VW opravím";
+        }
+        return sprava;
+    }
+
+    private String skontrolujVW(){
+        String sprava = "Stroj VW poriadku";
+        if (!strojAudi.isFunkcnost()){
+            sprava = "Nefuknčný stroj VW opravím";
+        }
+        return sprava;
+    }
 
     @Override
     public void setVyplata(int ciastka) {
@@ -30,8 +46,12 @@ public class Opravar implements Clovek {
     }
 
     @Override
-    public void vykonaj() {
-
+    public void vykonaj(String model) {
+        if (model.equals("VW")){
+            strojVW.setFunkcnost(true);
+        }else if (model.equals("Audi")){
+            strojAudi.setFunkcnost(true);
+        }
     }
 
 

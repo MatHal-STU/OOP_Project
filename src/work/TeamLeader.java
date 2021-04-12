@@ -19,7 +19,7 @@ public class TeamLeader extends SkusenyRobotnik {
                 .toString();
     }
 
-    public void trening() {
+    public void trening() { //neskor bude moct povysit neskuseneho na skuseneho
 
     }
 

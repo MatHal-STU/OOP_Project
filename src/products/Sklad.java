@@ -28,20 +28,20 @@ public class Sklad {
         this.material3 = material3;
     }
 
-    public int getPalubovka1() {
+    public int getPalubovkaVW() {
         return palubovka1;
     }
 
-    public void setPalubovka1(int palubovka1) {
-        this.palubovka1 = palubovka1;
+    public void setPalubovkaVW(int palubovka1) {
+        this.palubovka1 += palubovka1;
     }
 
-    public int getPalubovka2() {
+    public int getPalubovkaAudi() {
         return palubovka2;
     }
 
-    public void setPalubovka2(int palubovka2) {
-        this.palubovka2 = palubovka2;
+    public void setPalubovkaAudi(int palubovka2) {
+        this.palubovka2 += palubovka2;
     }
 
     int material1=0,material2=0,material3=0;

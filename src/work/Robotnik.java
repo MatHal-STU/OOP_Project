@@ -1,13 +1,25 @@
 package work;
 
+import products.Sklad;
+
 import java.util.Random;
 
 public abstract class Robotnik implements Clovek{
     protected int vyplata;
     protected boolean skuseny;
+
+    public String getMeno() {
+        return meno;
+    }
+
+    public void setMeno(String meno) {
+        this.meno = meno;
+    }
+
     protected String meno;
+    protected int pocetMoznych; //pocet moznych vyrobenych vyrobkov na cas
 
-
+    Sklad sklad = Sklad.getInstance();
 
     public Robotnik(boolean skusenost) {
         this.skuseny = skusenost;
@@ -39,8 +51,12 @@ public abstract class Robotnik implements Clovek{
     }
 
     @Override
-    public void vykonaj() {
-
+    public void vykonaj(String model) {
+        if (model.equals("VW")){
+            sklad.setPalubovkaVW(1);
+        }else if (model.equals("Audi")){
+            sklad.setPalubovkaAudi(1);
+        }
     }
 
 

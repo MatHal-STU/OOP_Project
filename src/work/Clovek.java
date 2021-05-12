@@ -1,7 +1,10 @@
 package work;
 
-public interface Clovek {
+import products.PalubovkaAudi;
+import products.PalubovkaVW;
+
+public interface Clovek  {
         void setVyplata(int ciastka);
         int getVyplata();
-        void vykonaj(String model);
+        void vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi);
 }

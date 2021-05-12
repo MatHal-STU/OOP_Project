@@ -1,10 +1,16 @@
 package work;
 
+import javafx.scene.control.Alert;
+import products.PalubovkaAudi;
+import products.PalubovkaVW;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class TeamLeader extends SkusenyRobotnik {
 
-    public TeamLeader() {
+    public TeamLeader(PalubovkaAudi audi, PalubovkaVW vw) {
+        super();
         this.vyplata = (new Random().nextInt(8) + 5) * 100;
 
 
@@ -19,7 +25,8 @@ public class TeamLeader extends SkusenyRobotnik {
                 .toString();
     }
 
-    public void trening() { //neskor bude moct povysit neskuseneho na skuseneho
+    public void trening(String name ,ArrayList<NeskusenyRobotnik> list) { //neskor bude moct povysit neskuseneho na skuseneho
+
 
     }
 

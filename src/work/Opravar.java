@@ -1,10 +1,13 @@
 package work;
 
+import products.PalubovkaAudi;
+import products.PalubovkaVW;
 import sun.applet.AppletResourceLoader;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Opravar implements Clovek {
+public class Opravar implements Clovek, Serializable {
     protected int vyplata;
     protected boolean volny;
     protected String meno;
@@ -46,7 +49,7 @@ public class Opravar implements Clovek {
     }
 
     @Override
-    public void vykonaj(String model) {
+    public void vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi) {
         if (model.equals("VW")){
             strojVW.setFunkcnost(true);
         }else if (model.equals("Audi")){

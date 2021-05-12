@@ -1,9 +1,9 @@
 package managment;
 
-import products.Sklad;
+import products.PalubovkaAudi;
+import products.PalubovkaVW;
 import work.NeskusenyRobotnik;
 import work.SkusenyRobotnik;
-import work.Stroj;
 import work.TeamLeader;
 
 import java.util.ArrayList;
@@ -13,13 +13,18 @@ public class Produkcia extends Manazer {
 
     ArrayList<SkusenyRobotnik> skuseny = new ArrayList<>();
     ArrayList<NeskusenyRobotnik> neskuseny = new ArrayList<>();
-    TeamLeader teamLeader = new TeamLeader();
+    TeamLeader teamLeader;
 
 
-    Sklad sklad = Sklad.getInstance();
 
 
-    public Produkcia() {
+
+
+
+
+    public Produkcia(PalubovkaVW vw, PalubovkaAudi audi) {
+
+        this.teamLeader = new TeamLeader(audi,vw);
         setTyp("Produkcia");
         for (int i = 0; i < 5; i++) {
             SkusenyRobotnik robotnik = new SkusenyRobotnik();
@@ -29,9 +34,12 @@ public class Produkcia extends Manazer {
             NeskusenyRobotnik robotnik = new NeskusenyRobotnik();
             this.neskuseny.add(robotnik);
         }
+
+
     }
 
-    public String vypisRobotnikov(){
+
+        public String vypisRobotnikov(){
         StringBuilder sprava = new StringBuilder();
         int pocet = skuseny.size() + neskuseny.size();
         sprava.append("Počet robotnikov: ").append(pocet).append("\n");
@@ -46,7 +54,7 @@ public class Produkcia extends Manazer {
         return sprava.toString();
     }
 
-    public String vyrob(int pocet,String model){
+    public String vyrob(int pocet,String model,PalubovkaVW vw, PalubovkaAudi audi){
         if (pocet > skuseny.size()){
             int pocet2 = pocet - skuseny.size();
             pocet = skuseny.size();
@@ -57,11 +65,12 @@ public class Produkcia extends Manazer {
 
 
         for (int i = 0; i < pocet; i++) {
-            skuseny.get(i).vykonaj(model);
+            skuseny.get(i).vykonaj(model,vw,audi);
         }
 
         return "Vyrobene";
     }
+
 
 }
 

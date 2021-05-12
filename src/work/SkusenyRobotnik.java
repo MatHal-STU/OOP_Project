@@ -1,6 +1,11 @@
 package work;
 
-public class SkusenyRobotnik extends Robotnik{
+import products.PalubovkaAudi;
+import products.PalubovkaVW;
+
+import java.io.Serializable;
+
+public class SkusenyRobotnik extends Robotnik implements Serializable {
 
    public SkusenyRobotnik(){
        super(true);

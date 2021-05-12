@@ -8,6 +8,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.regex.Pattern;
 
 
 public class SceneProdukcia extends Stage {
@@ -32,8 +33,24 @@ public class SceneProdukcia extends Stage {
 
         choiceBoxmodel.getItems().addAll("VW","Audi");
         vyrobit.setOnAction(event ->{
-            vypisProdukcia.clear();
-            vypisProdukcia.appendText("Vyroba zahajena!\n"+ firma.vyrobaP(choiceBoxmodel,Integer.parseInt(textmnozstvo.getText())));
+            try {
+                String text = textmnozstvo.getText();
+                int number;
+
+                if (Pattern.matches("[a-zA-Z]+", text)) {
+                    throw new ZlySymbol();
+                }
+                number = Integer.parseInt(text);
+                vypisProdukcia.clear();
+                vypisProdukcia.appendText("Vyroba zahajena!\n"+ firma.vyrobaP(choiceBoxmodel,number));
+            }catch (ZlySymbol ex){
+                ex.alert();
+            }
+
+
+
+            //vypisProdukcia.clear();
+           // vypisProdukcia.appendText("Vyroba zahajena!\n"+ firma.vyrobaP(choiceBoxmodel,Integer.parseInt(textmnozstvo.getText())));
 
         });
         vypisPracovnikov.setOnAction(event ->{
@@ -44,7 +61,7 @@ public class SceneProdukcia extends Stage {
 
 
         Button sklad = new Button("Sklad");
-        sklad.setOnAction(e -> new WinSklad());
+        sklad.setOnAction(e -> new WinSklad(firma));
 
         Button odhlas = new Button("Odhlásiť");
         odhlas.setOnAction(e -> new SceneUvod(hlavneOkno));

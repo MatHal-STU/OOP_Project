@@ -1,17 +1,14 @@
 package managment;
 
 
-import products.Sklad;
+import java.io.Serializable;
 
-public abstract class Manazer {
+public abstract class Manazer implements Serializable {
     protected int rozpocet;
 
 
 
 
-    public String getTyp() {
-        return typ;
-    }
 
     public void setTyp(String typ) {
         this.typ = typ;

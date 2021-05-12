@@ -1,12 +1,15 @@
 package work;
 
-import products.Sklad;
+import products.PalubovkaAudi;
+import products.PalubovkaVW;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public abstract class Robotnik implements Clovek{
+public abstract class Robotnik implements Clovek, Serializable {
     protected int vyplata;
     protected boolean skuseny;
+
 
     public String getMeno() {
         return meno;
@@ -19,15 +22,17 @@ public abstract class Robotnik implements Clovek{
     protected String meno;
     protected int pocetMoznych; //pocet moznych vyrobenych vyrobkov na cas
 
-    Sklad sklad = Sklad.getInstance();
+
 
     public Robotnik(boolean skusenost) {
+
         this.skuseny = skusenost;
-        if(skusenost){
-            this.vyplata = (new Random().nextInt(3)+8)*100;
-        }else{
-            this.vyplata = (new Random().nextInt(3)+5)*100;
+        if (skusenost) {
+            this.vyplata = (new Random().nextInt(3) + 8) * 100;
+        } else {
+            this.vyplata = (new Random().nextInt(3) + 5) * 100;
         }
+
 
         int leftLimit = 65; // pismeno 'A'
         int rightLimit = 90; // pismeno 'Z'
@@ -51,12 +56,23 @@ public abstract class Robotnik implements Clovek{
     }
 
     @Override
-    public void vykonaj(String model) {
-        if (model.equals("VW")){
-            sklad.setPalubovkaVW(1);
-        }else if (model.equals("Audi")){
-            sklad.setPalubovkaAudi(1);
+    public void vykonaj(String model,PalubovkaVW vw,PalubovkaAudi audi) {
+        if (model.equals("VW")) {
+            if (skuseny) {
+                vw.nastavPocetVW(2);
+            } else {
+                vw.nastavPocetVW(1);
+            }
+
+        } else if (model.equals("Audi")) {
+            if (skuseny){
+                audi.nastavPocetAudi(2);
+            }else {
+                audi.nastavPocetAudi(1);
+            }
         }
+
+
     }
 
 

@@ -11,12 +11,13 @@ import javafx.stage.Stage;
 
 public class WinSklad extends Stage {
 
-    public WinSklad(){
+    public WinSklad(Firma firma){
         VBox skladlayout = new VBox(10);
 
-        Firma firma = new Firma();
+
 
         TilePane tileButtonsSklad = new TilePane(Orientation.HORIZONTAL);
+
 
 
 
@@ -29,13 +30,12 @@ public class WinSklad extends Stage {
         skladlayout.getChildren().addAll(tileButtonsSklad, vypisSklad);
 
         palubovky.setOnAction(e->{
-                vypisSklad.clear();
-                vypisSklad.appendText(firma.vypisPalub());});
-
-        material.setOnAction(e-> {
             vypisSklad.clear();
-            vypisSklad.appendText(firma.vypisMat());
+            vypisSklad.appendText(firma.vypisPalub());
+
         });
+
+        material.setOnAction(e-> { });
 
         setScene(new Scene(skladlayout, 500, 300));
         show();

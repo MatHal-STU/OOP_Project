@@ -16,6 +16,15 @@ public class Palubovky implements Produkty,Serializable {
         pocet = 0;
         this.cena = cena;
     }
+    public int getPocet() {
+        return pocet;
+    }
+
+
+    @Override
+    public void pridajPocet(int cislo) {
+        this.pocet += cislo;
+    }
 
 
 

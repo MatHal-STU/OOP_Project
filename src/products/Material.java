@@ -10,4 +10,9 @@ public class Material implements Produkty{
         this.typ = typ;
         pocet = 0;
     }
+
+    @Override
+    public void pridajPocet(int cislo) {
+        this.pocet += cislo;
+    }
 }

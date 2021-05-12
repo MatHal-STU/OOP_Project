@@ -14,7 +14,7 @@ public class Firma implements Serializable {
 
 
     Opravar opravar = new Opravar();
-
+    Serializacia serializacia;
 
     PalubovkaAudi palubovkaAudi = new PalubovkaAudi();
     PalubovkaVW palubovkaVW = new PalubovkaVW();
@@ -24,22 +24,24 @@ public class Firma implements Serializable {
 
     private void uloz() throws ClassNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/palubovkaAudi.out"));
-        PalubovkaAudi audi = new PalubovkaAudi();
-        out.writeObject(audi);
+        Serializacia serializacia = new Serializacia(0,0,0,0);
+        this.serializacia = serializacia;
+        out.writeObject(serializacia);
         out.close();
     }
 
     private void ulozVyrobene() throws ClassNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/palubovkaAudi.out"));
-        out.writeObject(this.palubovkaAudi);
+        this.serializacia.setPocetPaluboviekAudi(skladPaluboviek.getPocetAudi());
+        this.serializacia.setPocetPaluboviekVW(skladPaluboviek.getPocetVW());
+        out.writeObject(this.serializacia);
         out.close();
     }
 
     private void nacitaj() throws ClassNotFoundException, IOException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/palubovkaAudi.out"));
-        PalubovkaAudi audi = (PalubovkaAudi) in.readObject();
-        this.palubovkaAudi.nastavPocetAudi(audi.getPocet());
-        System.out.println(palubovkaAudi.getPocet());
+        this.serializacia = (Serializacia) in.readObject();
+        System.out.println(serializacia.getPocetMaterialuAudi() + " " + serializacia.getPocetMaterialuVW() + "\n" + serializacia.getPocetPaluboviekAudi() + " " + serializacia.getPocetPaluboviekVW());
         in.close();
 
     }

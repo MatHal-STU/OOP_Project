@@ -59,16 +59,20 @@ public abstract class Robotnik implements Clovek, Serializable {
     public void vykonaj(String model,PalubovkaVW vw,PalubovkaAudi audi) {
         if (model.equals("VW")) {
             if (skuseny) {
-                vw.nastavPocetVW(2);
+                vw.pridajPocet(1);
+                vw.upovdeomSledovatelov();
             } else {
-                vw.nastavPocetVW(1);
+                vw.pridajPocet(1);
+                vw.upovdeomSledovatelov();
             }
 
         } else if (model.equals("Audi")) {
             if (skuseny){
-                audi.nastavPocetAudi(2);
+                audi.pridajPocet(1);
+                audi.upovedomSledovatelov();
             }else {
-                audi.nastavPocetAudi(1);
+                audi.pridajPocet(1);
+                audi.upovedomSledovatelov();
             }
         }
 

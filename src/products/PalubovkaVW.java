@@ -6,13 +6,8 @@ import java.util.List;
 
 public class PalubovkaVW extends Palubovky implements Serializable {
 
-    public static final long serialVersionUID = 1;
 
-    public int getPocet() {
-        return pocet;
-    }
 
-    private int pocet;
 
     transient private List<SledovatelPaluboviek> sledovatelia = new ArrayList<>();
 
@@ -27,10 +22,12 @@ public class PalubovkaVW extends Palubovky implements Serializable {
     }
 
 
-    public void nastavPocetVW(int cislo){
-        this.pocet += cislo;
+    public void upovdeomSledovatelov(){
         for(SledovatelPaluboviek sledovatel : this.sledovatelia){
             sledovatel.upovedomVW();
         }
     }
+
+
+
 }

@@ -41,6 +41,8 @@ public class Firma implements Serializable {
     private void nacitaj() throws ClassNotFoundException, IOException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/palubovkaAudi.out"));
         this.serializacia = (Serializacia) in.readObject();
+        palubovkaAudi.pridajPocet(serializacia.getPocetPaluboviekAudi());
+        palubovkaVW.pridajPocet(serializacia.getPocetPaluboviekVW());
         System.out.println(serializacia.getPocetMaterialuAudi() + " " + serializacia.getPocetMaterialuVW() + "\n" + serializacia.getPocetPaluboviekAudi() + " " + serializacia.getPocetPaluboviekVW());
         in.close();
 
@@ -60,8 +62,11 @@ public class Firma implements Serializable {
         }
         this.skladPaluboviek = new SkladPaluboviek(palubovkaVW, palubovkaAudi);
 
+
         palubovkaAudi.pridajSledovatelaAudi(skladPaluboviek);
         palubovkaVW.pridajSledovatelaVW(skladPaluboviek);
+        palubovkaAudi.upovedomSledovatelov();
+        palubovkaVW.upovdeomSledovatelov();
     }
 
     public String vyrobaP(ChoiceBox<String> vyber, int mnozstvo) {

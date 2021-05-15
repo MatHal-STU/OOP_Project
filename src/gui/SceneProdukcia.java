@@ -67,8 +67,8 @@ public class SceneProdukcia extends Stage {
         odhlas.setOnAction(e -> new SceneUvod(hlavneOkno,firma));
 
         tilevyroba.getChildren().addAll(textmnozstvo,mn,choiceBoxmodel,vyrobit);
-        tileButtonsProdukcia.getChildren().addAll(objednavka,vypisPracovnikov,sklad, odhlas);
-        prodlayout.getChildren().addAll(tileButtonsProdukcia,tilevyroba, vypisProdukcia);
+        tileButtonsProdukcia.getChildren().addAll(objednavka,vypisPracovnikov,sklad);
+        prodlayout.getChildren().addAll(tileButtonsProdukcia,tilevyroba, vypisProdukcia,odhlas);
         Scene scenaProdukcia = new Scene(prodlayout,700,500);
 
 

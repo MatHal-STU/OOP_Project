@@ -22,6 +22,7 @@ public class Firma implements Serializable {
 
     Sklad sklad;
 
+
     LogistikaControler logistikaControler;
 
     private void uloz() throws ClassNotFoundException, IOException {
@@ -67,6 +68,7 @@ public class Firma implements Serializable {
             e.printStackTrace();
         }
         this.sklad = new Sklad(palubovkaVW, palubovkaAudi,materialVW,materialAudi);
+
 
         this.logistikaControler = new LogistikaControler(palubovkaVW,palubovkaAudi,materialVW,materialAudi);
         materialAudi.pridajSledovatelaAudi(sklad);
@@ -116,5 +118,18 @@ public class Firma implements Serializable {
                 "\nPocet materiálu Audi " + sklad.getMaterialAudiPocet();
 
         return sprava;
+    }
+
+    public String doplnMaterial(ChoiceBox<String> vyber,int pocet){
+
+        String model = vyber.getValue();
+        String vysledok =  logistikaControler.doplnenie(model,pocet);
+        try {
+            ulozVyrobene();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+        return vysledok;
+
     }
 }

@@ -1,16 +1,26 @@
 package background;
 
+import managment.Logistika;
 import products.*;
 
 public class LogistikaControler {
-    PalubovkaAudi palubovkaAudi;
-    PalubovkaVW palubovkaVW;
-    MaterialVW materialVW;
-    MaterialAudi materialAudi;
+    private PalubovkaAudi palubovkaAudi;
+    private PalubovkaVW palubovkaVW;
+    private MaterialVW materialVW;
+    private MaterialAudi materialAudi;
 
-    Sklad sklad;
+    private Sklad sklad;
 
+    private Logistika logistika;
 
+    public String doplnenie(String model,int pocet){
+        String vysledok;
+        vysledok = logistika.doplnenie(model,pocet);
+        sklad.upovedomMaterialAudi();
+        sklad.upovedomMaterialVW();
+
+        return vysledok;
+    }
 
 
     public LogistikaControler(PalubovkaVW vw, PalubovkaAudi audi,MaterialVW vwMat,MaterialAudi audiMat){
@@ -18,6 +28,7 @@ public class LogistikaControler {
         this.palubovkaVW = vw;
         this.materialAudi = audiMat;
         this.materialVW = vwMat;
+        this.logistika = new Logistika(materialVW,materialAudi);
 
         this.sklad = new Sklad(palubovkaVW,palubovkaAudi,materialVW,materialAudi);
         palubovkaVW.pridajSledovatelaVW(sklad);

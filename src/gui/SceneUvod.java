@@ -21,7 +21,7 @@ public class SceneUvod extends Stage {
         produkcia.setOnAction(e -> new SceneProdukcia(hlavneOkno,firma));
         logistika.setOnAction(e -> new SceneLogistika(hlavneOkno,firma));
         uctovnictvo.setOnAction(e -> new SceneUctovnictvo(hlavneOkno,firma));
-        objednat.setOnAction(e -> new SceneUctovnictvo(hlavneOkno,firma));
+        objednat.setOnAction(e -> new SceneObjednavka(hlavneOkno,firma));
 
         uvodlayout.getChildren().addAll(produkcia, logistika, uctovnictvo,objednat);
         Scene uvod = new Scene(uvodlayout,500,300);

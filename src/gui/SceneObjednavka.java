@@ -26,9 +26,10 @@ public class SceneObjednavka {
 
 
         TilePane znacka = new TilePane(Orientation.HORIZONTAL);
-        Label zn = new Label("Meno firmy");
+        Label zn = new Label("Značka");
         ChoiceBox<String> model = new ChoiceBox<>();
         model.getItems().addAll("VW","Audi");
+        model.setValue("VW");
 
 
         TilePane mnozstvo = new TilePane(Orientation.HORIZONTAL);

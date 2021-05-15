@@ -3,9 +3,7 @@ package background;
 
 import javafx.scene.control.ChoiceBox;
 import managment.Produkcia;
-import products.PalubovkaAudi;
-import products.PalubovkaVW;
-import products.SkladPaluboviek;
+import products.*;
 import work.Opravar;
 
 import java.io.*;
@@ -18,9 +16,13 @@ public class Firma implements Serializable {
 
     PalubovkaAudi palubovkaAudi = new PalubovkaAudi();
     PalubovkaVW palubovkaVW = new PalubovkaVW();
+    MaterialAudi materialAudi = new MaterialAudi();
+    MaterialVW materialVW = new MaterialVW();
     Produkcia produkcia = new Produkcia(palubovkaVW, palubovkaAudi);
 
-    SkladPaluboviek skladPaluboviek;
+    Sklad sklad;
+
+    LogistikaControler logistikaControler;
 
     private void uloz() throws ClassNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/palubovkaAudi.out"));
@@ -32,8 +34,10 @@ public class Firma implements Serializable {
 
     private void ulozVyrobene() throws ClassNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/palubovkaAudi.out"));
-        this.serializacia.setPocetPaluboviekAudi(skladPaluboviek.getPocetAudi());
-        this.serializacia.setPocetPaluboviekVW(skladPaluboviek.getPocetVW());
+        this.serializacia.setPocetPaluboviekAudi(sklad.getPocetAudi());
+        this.serializacia.setPocetPaluboviekVW(sklad.getPocetVW());
+        this.serializacia.setPocetMaterialuAudi(sklad.getMaterialAudiPocet());
+        this.serializacia.setPocetMaterialuVW(sklad.getMaterialVWPocet());
         out.writeObject(this.serializacia);
         out.close();
     }
@@ -43,6 +47,8 @@ public class Firma implements Serializable {
         this.serializacia = (Serializacia) in.readObject();
         palubovkaAudi.pridajPocet(serializacia.getPocetPaluboviekAudi());
         palubovkaVW.pridajPocet(serializacia.getPocetPaluboviekVW());
+        materialAudi.pridajPocet(serializacia.getPocetMaterialuAudi());
+        materialVW.pridajPocet(serializacia.getPocetMaterialuVW());
         System.out.println(serializacia.getPocetMaterialuAudi() + " " + serializacia.getPocetMaterialuVW() + "\n" + serializacia.getPocetPaluboviekAudi() + " " + serializacia.getPocetPaluboviekVW());
         in.close();
 
@@ -60,13 +66,17 @@ public class Firma implements Serializable {
             }
             e.printStackTrace();
         }
-        this.skladPaluboviek = new SkladPaluboviek(palubovkaVW, palubovkaAudi);
+        this.sklad = new Sklad(palubovkaVW, palubovkaAudi,materialVW,materialAudi);
 
-
-        palubovkaAudi.pridajSledovatelaAudi(skladPaluboviek);
-        palubovkaVW.pridajSledovatelaVW(skladPaluboviek);
+        this.logistikaControler = new LogistikaControler(palubovkaVW,palubovkaAudi,materialVW,materialAudi);
+        materialAudi.pridajSledovatelaAudi(sklad);
+        materialVW.pridajSledovatelaVW(sklad);
+        palubovkaAudi.pridajSledovatelaAudi(sklad);
+        palubovkaVW.pridajSledovatelaVW(sklad);
         palubovkaAudi.upovedomSledovatelov();
         palubovkaVW.upovdeomSledovatelov();
+        materialVW.upovdeomSledovatelov();
+        materialAudi.upovedomSledovatelov();
     }
 
     public String vyrobaP(ChoiceBox<String> vyber, int mnozstvo) {
@@ -94,9 +104,16 @@ public class Firma implements Serializable {
 
     public String vypisPalub() {
         String sprava;
-        sprava = "Pocet paluboviek VW " + skladPaluboviek.getPocetVW() +
-                "\nPocet paluboviek Audi " + skladPaluboviek.getPocetAudi();
+        sprava = "Pocet paluboviek VW " + sklad.getPocetVW() +
+                "\nPocet paluboviek Audi " + sklad.getPocetAudi();
 
+        return sprava;
+    }
+
+    public String vypisMaterialu() {
+        String sprava;
+        sprava = "Pocet materiálu VW " + sklad.getMaterialVWPocet() +
+                "\nPocet materiálu Audi " + sklad.getMaterialAudiPocet();
 
         return sprava;
     }

@@ -1,6 +1,8 @@
 package products;
 
-public class Material implements Produkty{
+import java.io.Serializable;
+
+public class Material implements Produkty, Serializable {
     private String typ;
     private int pocet;
 
@@ -9,6 +11,11 @@ public class Material implements Produkty{
     public Material (String typ){
         this.typ = typ;
         pocet = 0;
+    }
+
+    @Override
+    public int getPocet() {
+        return pocet;
     }
 
     @Override

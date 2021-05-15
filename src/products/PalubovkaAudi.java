@@ -8,20 +8,20 @@ public class PalubovkaAudi extends Palubovky implements Serializable {
 
 
 
-    transient private List<SledovatelPaluboviek> sledovatelia = new ArrayList<>();
+    transient private List<SledovatelSkladu> sledovatelia = new ArrayList<>();
 
     public PalubovkaAudi(){
         super("Audi",5000);
     }
 
-    public void pridajSledovatelaAudi(SledovatelPaluboviek sledovatel){
+    public void pridajSledovatelaAudi(SledovatelSkladu sledovatel){
         this.sledovatelia.add(sledovatel);
         sledovatel.upovedomAudi();
     }
 
 
     public void upovedomSledovatelov(){
-        for(SledovatelPaluboviek sledovatel : this.sledovatelia){
+        for(SledovatelSkladu sledovatel : this.sledovatelia){
             sledovatel.upovedomAudi();
         }
     }

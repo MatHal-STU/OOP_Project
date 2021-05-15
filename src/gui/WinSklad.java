@@ -35,7 +35,10 @@ public class WinSklad extends Stage {
 
         });
 
-        material.setOnAction(e-> { });
+        material.setOnAction(e-> {
+            vypisSklad.clear();
+            vypisSklad.appendText(firma.vypisMaterialu());
+        });
 
         setScene(new Scene(skladlayout, 500, 300));
         show();

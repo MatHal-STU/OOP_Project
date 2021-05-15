@@ -9,7 +9,7 @@ public class PalubovkaVW extends Palubovky implements Serializable {
 
 
 
-    transient private List<SledovatelPaluboviek> sledovatelia = new ArrayList<>();
+    transient private List<SledovatelSkladu> sledovatelia = new ArrayList<>();
 
     public PalubovkaVW(){
         super("VW",4200);
@@ -17,13 +17,13 @@ public class PalubovkaVW extends Palubovky implements Serializable {
 
 
 
-    public void pridajSledovatelaVW(SledovatelPaluboviek sledovatel){
+    public void pridajSledovatelaVW(SledovatelSkladu sledovatel){
         this.sledovatelia.add(sledovatel);
     }
 
 
     public void upovdeomSledovatelov(){
-        for(SledovatelPaluboviek sledovatel : this.sledovatelia){
+        for(SledovatelSkladu sledovatel : this.sledovatelia){
             sledovatel.upovedomVW();
         }
     }

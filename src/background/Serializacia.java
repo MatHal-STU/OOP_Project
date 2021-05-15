@@ -12,6 +12,7 @@ public class Serializacia implements Serializable {
     private int pocetPaluboviekAudi;
     private int pocetPaluboviekVW;
 
+
     public int getPocetPaluboviekAudi() {
         return pocetPaluboviekAudi;
     }

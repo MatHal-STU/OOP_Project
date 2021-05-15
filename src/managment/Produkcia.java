@@ -18,10 +18,6 @@ public class Produkcia extends Manazer {
 
 
 
-
-
-
-
     public Produkcia(PalubovkaVW vw, PalubovkaAudi audi) {
 
         this.teamLeader = new TeamLeader(audi,vw);

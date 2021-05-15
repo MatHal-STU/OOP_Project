@@ -14,10 +14,9 @@ import java.util.regex.Pattern;
 public class SceneProdukcia extends Stage {
 
 
-    public SceneProdukcia(Stage hlavneOkno){
+    public SceneProdukcia(Stage hlavneOkno,Firma firma){
         super();
 
-        Firma firma = new Firma();
 
         VBox prodlayout = new VBox(5);
         TilePane tileButtonsProdukcia = new TilePane(Orientation.HORIZONTAL);
@@ -28,6 +27,7 @@ public class SceneProdukcia extends Stage {
 
         Button vyrobit = new Button("Vyrobiť P");
         ChoiceBox<String> choiceBoxmodel = new ChoiceBox<>();
+        choiceBoxmodel.setValue("VW");
         TextField textmnozstvo = new TextField();
         Label mn = new Label("Množstvo");
 
@@ -64,7 +64,7 @@ public class SceneProdukcia extends Stage {
         sklad.setOnAction(e -> new WinSklad(firma));
 
         Button odhlas = new Button("Odhlásiť");
-        odhlas.setOnAction(e -> new SceneUvod(hlavneOkno));
+        odhlas.setOnAction(e -> new SceneUvod(hlavneOkno,firma));
 
         tilevyroba.getChildren().addAll(textmnozstvo,mn,choiceBoxmodel,vyrobit);
         tileButtonsProdukcia.getChildren().addAll(objednavka,vypisPracovnikov,sklad, odhlas);

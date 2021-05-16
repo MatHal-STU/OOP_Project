@@ -26,7 +26,7 @@ public class TeamLeader extends SkusenyRobotnik {
     }
 
     /**
-     * Povýšenie neskuseneho pracovnika
+     * Povýšenie neskuseneho pracovnika, povýšený može byt ten co vyrobi 10 paluboviek ako neskuseny
      * @param neskuseny - list neskusenych ktory prejde ci niektory z nich moze byt povyseny
      * @param skuseny - na pridanie do listu vyssie postavenych
      * @return vrati spravu ci povysil niekoho alebo nie

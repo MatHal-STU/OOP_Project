@@ -14,10 +14,10 @@ public class Produkcia extends Manazer {
 
     ArrayList<SkusenyRobotnik> skuseny = new ArrayList<>();
     ArrayList<NeskusenyRobotnik> neskuseny = new ArrayList<>();
-    TeamLeader teamLeader;
+    private TeamLeader teamLeader;
     private final Stroj strojVW = new Stroj("VW");
     private final Stroj strojAudi = new Stroj("Audi");
-    Opravar opravar ;
+    private Opravar opravar ;
 
     public void setPlanVW(int planVW) {
         this.planVW = planVW;

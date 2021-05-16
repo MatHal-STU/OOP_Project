@@ -36,6 +36,13 @@ public class Opravar implements Clovek, Serializable {
         return this.vyplata;
     }
 
+    /**
+     * Skontroluje funkcnost stroja ak je pokazeny opravi ho
+     * @param model -
+     * @param vw -
+     * @param audi -
+     * @return vrati spravu ak nieco opravil
+     */
     @Override
     public String vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi) {
 

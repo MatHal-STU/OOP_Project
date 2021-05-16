@@ -25,9 +25,25 @@ public class TeamLeader extends SkusenyRobotnik {
                 .toString();
     }
 
-    public void trening(String name ,ArrayList<NeskusenyRobotnik> list) { //neskor bude moct povysit neskuseneho na skuseneho
+    public String trening(ArrayList<NeskusenyRobotnik> neskuseny,ArrayList<SkusenyRobotnik> skuseny) { //neskor bude moct povysit neskuseneho na skuseneho
 
-
+        boolean povysenie = false;
+        StringBuilder sprava = new StringBuilder();
+        for (int i = 0; i < neskuseny.size(); i++) {
+            if (neskuseny.get(i).trening){
+                SkusenyRobotnik trening = new SkusenyRobotnik();
+                trening.setMeno(neskuseny.get(i).getMeno());
+                skuseny.add(trening);
+                sprava.append(trening.meno).append(" bol povýšený");
+                //noinspection SuspiciousListRemoveInLoop
+                neskuseny.remove(i);
+                povysenie =true;
+            }
+        }
+        if (!povysenie){
+            return "Nikto nebol povýšený";
+        }
+        return sprava.toString();
     }
 
 }

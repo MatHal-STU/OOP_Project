@@ -6,7 +6,7 @@ public class Stroj {
     protected String typ;
 
     public boolean isFunkcnost() {
-        return funkcnost;
+        return !funkcnost;
     }
 
     public void setFunkcnost(boolean funkcnost) {

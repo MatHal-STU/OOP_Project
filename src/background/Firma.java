@@ -23,7 +23,7 @@ public class Firma implements Serializable {
     PalubovkaVW palubovkaVW = new PalubovkaVW();
     MaterialAudi materialAudi = new MaterialAudi();
     MaterialVW materialVW = new MaterialVW();
-    Produkcia produkcia = new Produkcia(palubovkaVW, palubovkaAudi);
+    Produkcia produkcia = new Produkcia(palubovkaVW, palubovkaAudi,materialVW,materialAudi);
 
     Sklad sklad;
 
@@ -173,5 +173,13 @@ public class Firma implements Serializable {
 
     public String vypisPlanu() {
         return produkcia.vypisPlanu();
+    }
+
+    public String opravaStroju(){
+        return produkcia.oprava(palubovkaVW,palubovkaAudi);
+    }
+
+    public String trening() {
+        return produkcia.trening();
     }
 }

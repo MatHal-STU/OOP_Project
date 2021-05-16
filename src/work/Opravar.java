@@ -2,10 +2,8 @@ package work;
 
 import products.PalubovkaAudi;
 import products.PalubovkaVW;
-import sun.applet.AppletResourceLoader;
 
 import java.io.Serializable;
-import java.util.Random;
 
 public class Opravar implements Clovek, Serializable {
     protected int vyplata;
@@ -24,21 +22,9 @@ public class Opravar implements Clovek, Serializable {
     }
 
 
-    private String skontrolujAudi(){
-        String sprava = "Stroj Audi v poriadku";
-        if (!strojAudi.isFunkcnost()){
-            sprava = "Nefuknčný stroj VW opravím";
-        }
-        return sprava;
-    }
 
-    private String skontrolujVW(){
-        String sprava = "Stroj VW poriadku";
-        if (!strojAudi.isFunkcnost()){
-            sprava = "Nefuknčný stroj VW opravím";
-        }
-        return sprava;
-    }
+
+
 
     @Override
     public void setVyplata(int ciastka) {
@@ -52,12 +38,20 @@ public class Opravar implements Clovek, Serializable {
 
     @Override
     public String vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi) {
-        if (model.equals("VW")){
+
+        StringBuilder sprava = new StringBuilder();
+        if (strojVW.isFunkcnost()){
             strojVW.setFunkcnost(true);
-        }else if (model.equals("Audi")){
-            strojAudi.setFunkcnost(true);
+            sprava.append("POKAZENÝ STROJ VW, OPRAVUJEM \n");
+            sprava.append("OPRAVENÉ\n");
         }
-        return "Opravene";
+        if (strojAudi.isFunkcnost()){
+            strojAudi.setFunkcnost(true);
+            sprava.append("POKAZENÝ STROJ AUDI, OPRAVUJEM \n");
+            sprava.append("OPRAVENÉ\n");
+        }
+
+        return sprava.toString();
     }
 
 

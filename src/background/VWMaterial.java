@@ -30,7 +30,9 @@ public class VWMaterial implements DoplnenieMaterialu{
     }
 
     @Override
-    public String pouzitie(int pocet) {
-        return null;
+    public void pouzitie(int pocet) {
+        this.materialVW.odoslanie(pocet);
     }
+
+
 }

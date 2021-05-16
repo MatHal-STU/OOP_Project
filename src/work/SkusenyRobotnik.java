@@ -11,4 +11,5 @@ public class SkusenyRobotnik extends Robotnik implements Serializable {
        super(true);
    }
 
+
 }

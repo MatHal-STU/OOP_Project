@@ -1,5 +1,7 @@
 package work;
 
+import products.MaterialAudi;
+import products.MaterialVW;
 import products.PalubovkaAudi;
 import products.PalubovkaVW;
 
@@ -11,6 +13,9 @@ public abstract class Robotnik implements Clovek, Serializable {
     protected boolean skuseny;
 
 
+    private MaterialVW materialVW;
+    private MaterialAudi materialAudi;
+
     public String getMeno() {
         return meno;
     }
@@ -20,8 +25,6 @@ public abstract class Robotnik implements Clovek, Serializable {
     }
 
     protected String meno;
-
-
 
 
     public Robotnik(boolean skusenost) {
@@ -55,23 +58,56 @@ public abstract class Robotnik implements Clovek, Serializable {
         return this.vyplata;
     }
 
+    public void setMaterial(MaterialVW vw, MaterialAudi audi) {
+        this.materialVW = vw;
+        this.materialAudi = audi;
+    }
+
     @Override
-    public String vykonaj(String model,PalubovkaVW vw,PalubovkaAudi audi) {
+    public String vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi) {
+        boolean vyrobil = true;
         if (model.equals("VW")) {
             if (skuseny) {
-                vw.pridajPocet(2);
+                if (materialVW.getPocet() >= 2) {
+                    vw.pridajPocet(2);
+                    materialVW.odoslanie(2);
+                }else {
+                    vyrobil = false;
+                }
             } else {
-                vw.pridajPocet(1);
+                if (materialVW.getPocet() >= 1) {
+                    vw.pridajPocet(1);
+                    materialVW.odoslanie(1);
+                }else {
+                    vyrobil = false;
+                }
             }
+            materialVW.upovdeomSledovatelov();
             vw.upovdeomSledovatelov();
 
+
         } else if (model.equals("Audi")) {
-            if (skuseny){
-                audi.pridajPocet(2);
-            }else {
-                audi.pridajPocet(1);
+            if (skuseny) {
+                if (materialAudi.getPocet() >= 2) {
+                    audi.pridajPocet(2);
+                    materialAudi.odoslanie(2);
+                }else {
+                    vyrobil = false;
+                }
+            } else {
+                if (materialAudi.getPocet() >= 2) {
+                    audi.pridajPocet(1);
+                    materialAudi.odoslanie(1);
+                }else {
+                    vyrobil = false;
+                }
             }
             audi.upovedomSledovatelov();
+            materialAudi.upovedomSledovatelov();
+        }
+
+        if (!vyrobil){
+            return "NEDOSTATOK MATERIALU\n";
         }
 
         return "Robotník " + this.meno + " vyrobil palubovku " + model + "\n";

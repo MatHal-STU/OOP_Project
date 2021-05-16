@@ -31,7 +31,9 @@ public class AudiMaterial implements DoplnenieMaterialu{
     }
 
     @Override
-    public String pouzitie(int pocet) {
-        return null;
+    public void pouzitie(int pocet) {
+        this.audi.odoslanie(pocet);
     }
+
+
 }

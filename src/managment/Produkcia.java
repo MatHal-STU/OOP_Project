@@ -55,12 +55,10 @@ public class Produkcia extends Manazer {
         int pocet = skuseny.size() + neskuseny.size();
         sprava.append("Počet robotnikov: ").append(pocet).append("\n");
 
-        for (SkusenyRobotnik skusenyRobotnik : skuseny) {
-            sprava.append(skusenyRobotnik.getMeno()).append(" platený: ").append(skusenyRobotnik.getVyplata()).append(" skusený\n");
-        }
-        for (NeskusenyRobotnik neskusenyRobotnik : neskuseny) {
-            sprava.append(neskusenyRobotnik.getMeno()).append(" platený: ").append(neskusenyRobotnik.getVyplata()).append(" neskusený, Počet vyrobených paluboviek ").append(neskusenyRobotnik.getVyrobeneKusy()).append("\n");
-        }
+       this.skuseny.forEach((n)-> {sprava.append(n.getMeno()).append(" platený: ").append(n.getVyplata()).append(" skusený\n");});
+
+       this.neskuseny.forEach((n)-> {sprava.append(n.getMeno()).append(" platený: ").append(n.getVyplata()).append(" neskusený, Počet vyrobených paluboviek ").append(n.getVyrobeneKusy()).append("\n");});
+
 
         return sprava.toString();
     }

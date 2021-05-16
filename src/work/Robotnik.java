@@ -63,6 +63,13 @@ public abstract class Robotnik implements Clovek, Serializable {
         this.materialAudi = audi;
     }
 
+    /**
+     * Výkon práce pracovníka ktorý vyrobý palubovku
+     * @param model - model ktorý vyrába
+     * @param vw -
+     * @param audi -
+     * @return - vráti správu o jeho stave
+     */
     @Override
     public String vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi) {
         boolean vyrobil = true;

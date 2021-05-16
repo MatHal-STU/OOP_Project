@@ -25,6 +25,12 @@ public class TeamLeader extends SkusenyRobotnik {
                 .toString();
     }
 
+    /**
+     * Povýšenie neskuseneho pracovnika
+     * @param neskuseny - list neskusenych ktory prejde ci niektory z nich moze byt povyseny
+     * @param skuseny - na pridanie do listu vyssie postavenych
+     * @return vrati spravu ci povysil niekoho alebo nie
+     */
     public String trening(ArrayList<NeskusenyRobotnik> neskuseny,ArrayList<SkusenyRobotnik> skuseny) { //neskor bude moct povysit neskuseneho na skuseneho
 
         boolean povysenie = false;

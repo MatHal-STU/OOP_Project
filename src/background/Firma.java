@@ -29,7 +29,9 @@ public class Firma implements Serializable {
 
 
     LogistikaControler logistikaControler;
-
+    /**
+     *Serializacia
+     */
     private void uloz() throws ClassNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/palubovkaAudi.out"));
         Serializacia serializacia = new Serializacia(0,0,0,0);
@@ -47,6 +49,7 @@ public class Firma implements Serializable {
         out.writeObject(this.serializacia);
         out.close();
     }
+
 
     private void nacitaj() throws ClassNotFoundException, IOException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/palubovkaAudi.out"));

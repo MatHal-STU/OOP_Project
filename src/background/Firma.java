@@ -30,7 +30,7 @@ public class Firma implements Serializable {
 
     LogistikaControler logistikaControler;
     /**
-     *Serializacia
+     *Serializacia uloz vytvára nový súbor
      */
     private void uloz() throws ClassNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/palubovkaAudi.out"));
@@ -40,6 +40,11 @@ public class Firma implements Serializable {
         out.close();
     }
 
+    /**
+     *
+     * Ukladá aktualizovane prvky
+     *
+     */
     private void ulozVyrobene() throws ClassNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/palubovkaAudi.out"));
         this.serializacia.setPocetPaluboviekAudi(sklad.getPocetAudi());
@@ -50,7 +55,11 @@ public class Firma implements Serializable {
         out.close();
     }
 
-
+    /**
+     *
+     * Načíta predošlý súbor
+     *
+     */
     private void nacitaj() throws ClassNotFoundException, IOException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/palubovkaAudi.out"));
         this.serializacia = (Serializacia) in.readObject();

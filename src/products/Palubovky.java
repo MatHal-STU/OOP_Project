@@ -28,11 +28,10 @@ public class Palubovky implements Produkty,Serializable {
         this.pocet += cislo;
     }
 
-
-
-
-
-
+    @Override
+    public void odoslanie(int cislo) {
+        this.pocet -= cislo;
+    }
 
 
 }

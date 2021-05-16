@@ -1,18 +1,23 @@
 package background;
 
 
+import gui.ZlySymbol;
 import javafx.scene.control.ChoiceBox;
 import managment.Produkcia;
 import products.*;
 import work.Opravar;
+import work.SkusenyRobotnik;
+import work.Stroj;
 
 import java.io.*;
+import java.util.regex.Pattern;
 
 public class Firma implements Serializable {
 
 
-    Opravar opravar = new Opravar();
+
     Serializacia serializacia;
+
 
     PalubovkaAudi palubovkaAudi = new PalubovkaAudi();
     PalubovkaVW palubovkaVW = new PalubovkaVW();
@@ -131,5 +136,42 @@ public class Firma implements Serializable {
         }
         return vysledok;
 
+    }
+
+    public String novaObjednavka(String name,ChoiceBox<String> vyber,String pocet){
+
+            return logistikaControler.novaObjednavka(name,vyber,pocet);
+
+    }
+
+    public String vypisObjednavok(){
+        return logistikaControler.vypisObjednavok();
+    }
+
+    public String odslatObjednavku(int cislo){
+        String sprava = logistikaControler.odslatObjednavku(cislo);
+        try {
+            ulozVyrobene();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+        return sprava;
+    }
+
+    public void zadatPlan(String vw, String audi) {
+        try {
+            if (Pattern.matches("[a-zA-Z]+", vw) || Pattern.matches("[a-zA-Z]+", audi)) {
+                throw new ZlySymbol();
+            }
+            produkcia.setPlanAudi(Integer.parseInt(audi));
+            produkcia.setPlanVW(Integer.parseInt(vw));
+
+        }catch (ZlySymbol ex){
+            ex.alert();
+        }
+    }
+
+    public String vypisPlanu() {
+        return produkcia.vypisPlanu();
     }
 }

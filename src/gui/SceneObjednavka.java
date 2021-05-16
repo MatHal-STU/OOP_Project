@@ -20,6 +20,9 @@ public class SceneObjednavka {
         Button odhlas2 = new Button("Odhlásiť");
         Button objednaj = new Button("Objednaj");
 
+        Label stav = new Label(" ");
+
+
         TilePane nazovFirmy = new TilePane(Orientation.HORIZONTAL);
         Label nf = new Label("Meno firmy");
         TextField textNazov = new TextField();
@@ -36,12 +39,14 @@ public class SceneObjednavka {
         Label mn = new Label("Množstvo");
         TextField textmnozstvo = new TextField();
 
+        objednaj.setOnAction(event -> stav.setText(firma.novaObjednavka(textNazov.getText(),model,textmnozstvo.getText())));
+
         nazovFirmy.getChildren().addAll(nf,textNazov);
         znacka.getChildren().addAll(zn,model);
         mnozstvo.getChildren().addAll(mn,textmnozstvo);
 
         odhlas2.setOnAction(e -> new SceneUvod(hlavneOkno,firma));
-        uctolayout.getChildren().addAll(nazovFirmy,znacka,mnozstvo,odhlas2);
+        uctolayout.getChildren().addAll(nazovFirmy,znacka,mnozstvo,stav,objednaj,odhlas2);
         Scene scenaUctovnictvo = new Scene(uctolayout,500,300);
 
         hlavneOkno.setScene(scenaUctovnictvo);

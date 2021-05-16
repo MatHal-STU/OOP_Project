@@ -16,8 +16,7 @@ public class Main extends Application {
     Scene uvod;
     private final Button produkcia= new Button("Produkčný Manažment");
     private final Button logistika= new Button("Logistický Manažment");
-    private final Button uctovnictvo= new Button("Účtovnícky Manažment");
-    private final Button objednavka = new Button("Objednať");
+    private final Button objednavka = new Button("Zákazník");
 
 
 
@@ -37,11 +36,10 @@ public class Main extends Application {
         //Tlacidla na presmerovanie na uvodnej strane
         produkcia.setOnAction(e -> new SceneProdukcia(hlavneOkno,firma));
         logistika.setOnAction(e -> new SceneLogistika(hlavneOkno,firma));
-        uctovnictvo.setOnAction(e -> new SceneUctovnictvo(hlavneOkno,firma));
         objednavka.setOnAction(e -> new SceneObjednavka(hlavneOkno,firma));
 
         VBox uvodlayout = new VBox(10);
-        uvodlayout.getChildren().addAll(produkcia, logistika, uctovnictvo,objednavka);
+        uvodlayout.getChildren().addAll(produkcia, logistika,objednavka);
         uvod = new Scene(uvodlayout,500,300);
 
 

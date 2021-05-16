@@ -22,4 +22,9 @@ public class Material implements Produkty, Serializable {
     public void pridajPocet(int cislo) {
         this.pocet += cislo;
     }
+
+    @Override
+    public void odoslanie(int cislo) {
+        this.pocet -= cislo;
+    }
 }

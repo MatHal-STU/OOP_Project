@@ -6,5 +6,5 @@ import products.PalubovkaVW;
 public interface Clovek  {
         void setVyplata(int ciastka);
         int getVyplata();
-        void vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi);
+        String vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi);
 }

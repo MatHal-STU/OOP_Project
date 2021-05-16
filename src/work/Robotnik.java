@@ -20,7 +20,7 @@ public abstract class Robotnik implements Clovek, Serializable {
     }
 
     protected String meno;
-    protected int pocetMoznych; //pocet moznych vyrobenych vyrobkov na cas
+
 
 
 
@@ -56,26 +56,25 @@ public abstract class Robotnik implements Clovek, Serializable {
     }
 
     @Override
-    public void vykonaj(String model,PalubovkaVW vw,PalubovkaAudi audi) {
+    public String vykonaj(String model,PalubovkaVW vw,PalubovkaAudi audi) {
         if (model.equals("VW")) {
             if (skuseny) {
-                vw.pridajPocet(1);
-                vw.upovdeomSledovatelov();
+                vw.pridajPocet(2);
             } else {
                 vw.pridajPocet(1);
-                vw.upovdeomSledovatelov();
             }
+            vw.upovdeomSledovatelov();
 
         } else if (model.equals("Audi")) {
             if (skuseny){
-                audi.pridajPocet(1);
-                audi.upovedomSledovatelov();
+                audi.pridajPocet(2);
             }else {
                 audi.pridajPocet(1);
-                audi.upovedomSledovatelov();
             }
+            audi.upovedomSledovatelov();
         }
 
+        return "Robotník " + this.meno + " vyrobil palubovku " + model + "\n";
 
     }
 

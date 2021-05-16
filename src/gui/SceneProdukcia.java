@@ -22,7 +22,7 @@ public class SceneProdukcia extends Stage {
         TilePane tileButtonsProdukcia = new TilePane(Orientation.HORIZONTAL);
         TilePane tilevyroba = new TilePane(Orientation.HORIZONTAL);
         Button vypisPracovnikov = new Button("Zoznam Pracovnikov");
-        Button objednavka = new Button("Objednavky");
+        Button plan = new Button("Plán výroby");
         TextArea vypisProdukcia = new TextArea();
 
         Button vyrobit = new Button("Vyrobiť P");
@@ -49,14 +49,16 @@ public class SceneProdukcia extends Stage {
 
 
 
-            //vypisProdukcia.clear();
-           // vypisProdukcia.appendText("Vyroba zahajena!\n"+ firma.vyrobaP(choiceBoxmodel,Integer.parseInt(textmnozstvo.getText())));
-
         });
         vypisPracovnikov.setOnAction(event ->{
             vypisProdukcia.clear();
             vypisProdukcia.appendText(firma.vypisRobotnikov());
 
+        });
+
+        plan.setOnAction(event -> {
+            vypisProdukcia.clear();
+            vypisProdukcia.appendText(firma.vypisPlanu());
         });
 
 
@@ -67,7 +69,7 @@ public class SceneProdukcia extends Stage {
         odhlas.setOnAction(e -> new SceneUvod(hlavneOkno,firma));
 
         tilevyroba.getChildren().addAll(textmnozstvo,mn,choiceBoxmodel,vyrobit);
-        tileButtonsProdukcia.getChildren().addAll(objednavka,vypisPracovnikov,sklad);
+        tileButtonsProdukcia.getChildren().addAll(plan,vypisPracovnikov,sklad);
         prodlayout.getChildren().addAll(tileButtonsProdukcia,tilevyroba, vypisProdukcia,odhlas);
         Scene scenaProdukcia = new Scene(prodlayout,700,500);
 

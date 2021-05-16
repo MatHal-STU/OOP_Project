@@ -9,6 +9,7 @@ public class AudiMaterial implements DoplnenieMaterialu{
     public AudiMaterial(MaterialAudi audi){
         this.audi = audi;
     }
+
     @Override
     public String doplnenie(int pocet) {
 
@@ -27,5 +28,10 @@ public class AudiMaterial implements DoplnenieMaterialu{
         audi.upovedomSledovatelov();
 
         return "Doplnene o " + pocet +" materialu Audi";
+    }
+
+    @Override
+    public String pouzitie(int pocet) {
+        return null;
     }
 }

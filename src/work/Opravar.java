@@ -12,10 +12,12 @@ public class Opravar implements Clovek, Serializable {
     protected boolean volny;
     protected String meno;
 
-    Stroj strojVW = new Stroj("VW");
-    Stroj strojAudi = new Stroj("Audi");
+    Stroj strojVW ;
+    Stroj strojAudi ;
 
-    public Opravar(){
+    public Opravar(Stroj strojVW, Stroj strojAudi){
+        this.strojVW = strojVW;
+        this.strojAudi = strojAudi;
         this.volny = true;
         this.meno = "František";
 
@@ -49,12 +51,13 @@ public class Opravar implements Clovek, Serializable {
     }
 
     @Override
-    public void vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi) {
+    public String vykonaj(String model, PalubovkaVW vw, PalubovkaAudi audi) {
         if (model.equals("VW")){
             strojVW.setFunkcnost(true);
         }else if (model.equals("Audi")){
             strojAudi.setFunkcnost(true);
         }
+        return "Opravene";
     }
 
 

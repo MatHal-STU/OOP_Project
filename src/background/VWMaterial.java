@@ -28,4 +28,9 @@ public class VWMaterial implements DoplnenieMaterialu{
         materialVW.upovdeomSledovatelov();
         return "Doplnene o " + pocet +" materialu VW";
     }
+
+    @Override
+    public String pouzitie(int pocet) {
+        return null;
+    }
 }
